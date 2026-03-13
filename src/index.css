@@ -36,6 +36,12 @@
 
     --radius: 0.75rem;
 
+    --navy: 233 100% 15%;
+    --gold: 43 100% 52%;
+    --gold-light: 43 100% 95%;
+    --navy-light: 233 60% 96%;
+    --navy-medium: 233 50% 25%;
+
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -44,11 +50,6 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
-
-    --navy: 233 100% 15%;
-    --gold: 43 100% 52%;
-    --gold-light: 43 100% 95%;
-    --navy-light: 233 60% 95%;
   }
 }
 
@@ -56,16 +57,69 @@
   * {
     @apply border-border;
   }
-
   body {
     @apply bg-background text-foreground font-body antialiased;
   }
-
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading;
   }
 }
 
+@layer utilities {
+  .gradient-navy {
+    background: linear-gradient(135deg, hsl(233 100% 15%) 0%, hsl(233 50% 25%) 100%);
+  }
+  .gradient-gold {
+    background: linear-gradient(135deg, hsl(43 100% 52%) 0%, hsl(38 100% 56%) 100%);
+  }
+  .gradient-hero {
+    background: linear-gradient(135deg, hsl(233 60% 96%) 0%, hsl(43 100% 97%) 50%, hsl(0 0% 100%) 100%);
+  }
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-sm border shadow-lg;
+  }
+  .section-pattern {
+    background-image: radial-gradient(hsl(233 100% 15% / 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  .text-gradient-navy {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(233 100% 15%) 0%, hsl(233 50% 30%) 100%);
+  }
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(43 100% 45%) 0%, hsl(38 100% 50%) 100%);
+  }
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-xl;
+  }
+  .card-shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .card-shine::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.05), transparent);
+    transition: left 0.5s;
+  }
+  .card-shine:hover::before {
+    left: 100%;
+  }
+}
+
 html {
   scroll-behavior: smooth;
+}
+
+/* Stats counter styling */
+.stat-number {
+  @apply text-4xl md:text-5xl font-extrabold;
+  background: linear-gradient(135deg, hsl(43 100% 52%) 0%, hsl(38 100% 56%) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
