@@ -1,4 +1,5 @@
 import { Facebook, Instagram, Youtube, Linkedin } from "lucide-react";
+import logo from "@/assets/edustack-logo.jpeg";
 
 const Footer = () => (
   <footer className="gradient-navy pt-14 pb-8 relative overflow-hidden">

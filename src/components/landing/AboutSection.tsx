@@ -1,5 +1,5 @@
 import { BookOpen, Users, Globe, CheckCircle2 } from "lucide-react";
-import aboutImg from "@/assets/about-learning.jpg";
+import aboutImg from "@/assets/about-french.jpg";
 
 const highlights = [
   "Flexible recorded + live classes",
