@@ -51,10 +51,15 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        navy: "hsl(var(--navy))",
-        gold: "hsl(var(--gold))",
-        "gold-light": "hsl(var(--gold-light))",
-        "navy-light": "hsl(var(--navy-light))",
+        navy: {
+          DEFAULT: "hsl(var(--navy))",
+          medium: "hsl(var(--navy-medium))",
+          light: "hsl(var(--navy-light))",
+        },
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          light: "hsl(var(--gold-light))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -70,6 +75,14 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        "2xl": "1rem",
+        "3xl": "1.5rem",
+      },
+      boxShadow: {
+        "card": "0 4px 20px -4px hsl(233 100% 15% / 0.08)",
+        "card-hover": "0 12px 40px -8px hsl(233 100% 15% / 0.15)",
+        "gold": "0 4px 20px -4px hsl(43 100% 52% / 0.4)",
+        "navy": "0 4px 20px -4px hsl(233 100% 15% / 0.3)",
       },
       keyframes: {
         "accordion-down": {
@@ -84,11 +97,31 @@ export default {
           from: { opacity: "0", transform: "translateY(30px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
+        "fade-in": {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
+        },
+        "slide-right": {
+          from: { opacity: "0", transform: "translateX(-30px)" },
+          to: { opacity: "1", transform: "translateX(0)" },
+        },
+        "counter": {
+          from: { opacity: "0", transform: "scale(0.5)" },
+          to: { opacity: "1", transform: "scale(1)" },
+        },
+        "float": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-up": "fade-up 0.6s ease-out forwards",
+        "fade-up": "fade-up 0.7s ease-out forwards",
+        "fade-in": "fade-in 0.5s ease-out forwards",
+        "slide-right": "slide-right 0.7s ease-out forwards",
+        "counter": "counter 0.5s ease-out forwards",
+        "float": "float 3s ease-in-out infinite",
       },
     },
   },
