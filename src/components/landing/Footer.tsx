@@ -13,9 +13,7 @@ const Footer = () => (
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 border-b border-primary-foreground/10">
         {/* Brand */}
         <div className="lg:col-span-1 space-y-4">
-          <h3 className="font-heading font-extrabold text-2xl text-primary-foreground">
-            Edu<span className="text-secondary">stack</span>
-          </h3>
+          <img src={logo} alt="Edustack Logo" className="h-14 w-auto rounded-lg bg-primary-foreground/10 p-1" />
           <p className="text-primary-foreground/60 text-sm leading-relaxed">
             Empowering students to master French and unlock opportunities in Canada through expert-led online education.
           </p>
