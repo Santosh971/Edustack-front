@@ -1,8 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { ChevronRight, Sparkles } from "lucide-react";
 import eiffelImg from "@/assets/paris-eiffel.jpg";
+import { useRegisterModal } from "@/context/RegisterModalContext";
 
-const CTASection = () => (
+const CTASection = () => {
+  const { openModal } = useRegisterModal();
+
+  return (
   <section className="py-20 md:py-28 relative overflow-hidden">
     {/* Background image */}
     <div className="absolute inset-0">
@@ -28,15 +32,16 @@ const CTASection = () => (
         Join hundreds of students who are building their future in Canada through French fluency. Don't wait — the next batch starts soon.
       </p>
       <div className="flex flex-wrap justify-center gap-4 pt-4">
-        <Button variant="gold" size="xl" className="shadow-gold">
+        <Button variant="gold" size="xl" className="shadow-gold" onClick={openModal}>
           Register Now <ChevronRight size={18} />
         </Button>
-        <Button size="xl" className="bg-primary-foreground/10 text-primary-foreground border border-primary-foreground/20 hover:bg-primary-foreground/20 shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">
+        {/* <Button size="xl" className="bg-primary-foreground/10 text-primary-foreground border border-primary-foreground/20 hover:bg-primary-foreground/20 shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">
           Join Next Batch
-        </Button>
+        </Button> */}
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default CTASection;

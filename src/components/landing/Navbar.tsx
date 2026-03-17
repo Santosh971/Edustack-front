@@ -1,18 +1,20 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronRight } from "lucide-react";
+import { useRegisterModal } from "@/context/RegisterModalContext";
 
 const navLinks = [
   { label: "About", href: "#about" },
   { label: "Courses", href: "#levels" },
   { label: "Method", href: "#method" },
   { label: "Why Us", href: "#why-choose" },
-  { label: "Contact", href: "#contact" },
+  // { label: "Contact", href: "#contact" },
 ];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { openModal } = useRegisterModal();
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
@@ -37,8 +39,8 @@ const Navbar = () => {
           ))}
         </div>
         <div className="hidden lg:flex items-center gap-3">
-          <Button variant="ghost" size="default" className="text-primary font-semibold">Login</Button>
-          <Button variant="gold" size="lg">
+          {/* <Button variant="ghost" size="default" className="text-primary font-semibold">Login</Button> */}
+          <Button variant="gold" size="lg" onClick={openModal}>
             Register Now <ChevronRight size={16} />
           </Button>
         </div>
@@ -59,7 +61,7 @@ const Navbar = () => {
               </a>
             ))}
             <div className="border-t my-2" />
-            <Button variant="gold" size="lg" className="mt-2">Register Now</Button>
+            <Button variant="gold" size="lg" className="mt-2" onClick={openModal}>Register Now</Button>
           </div>
         </div>
       )}

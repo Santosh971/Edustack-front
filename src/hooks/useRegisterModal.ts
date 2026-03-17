@@ -1,0 +1,1 @@
+export { useRegisterModal } from "@/context/RegisterModalContext";

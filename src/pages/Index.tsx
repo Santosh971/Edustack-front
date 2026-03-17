@@ -21,7 +21,7 @@ const Index = () => (
     <WhyChooseSection />
     <CertificateSection />
     <CTASection />
-    <ContactSection />
+    {/* <ContactSection /> */}
     <Footer />
   </>
 );
