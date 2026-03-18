@@ -2,19 +2,8 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronRight } from "lucide-react";
 import { useRegisterModal } from "@/context/RegisterModalContext";
-
-// Navigation links with IDs matching section IDs
-const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Courses", href: "#levels" },
-  { label: "Method", href: "#method" },
-  { label: "Why Us", href: "#why-choose" },
-  // { label: "Contact", href: "#contact" },
-];
-
-// Navbar height for scroll offset (fixed navbar height)
-const NAVBAR_HEIGHT = 80;
+import { navLinks, handleNavClick } from "@/config/navigation";
+import logo from "@/assets/EdustackLogo.png";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -27,45 +16,40 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
-  // Smooth scroll to section with offset for fixed navbar
-  const scrollToSection = (href: string) => {
-    const targetId = href.replace("#", "");
-    const element = document.getElementById(targetId);
-
-    if (element) {
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - NAVBAR_HEIGHT;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
-
-    // Close mobile menu after clicking
+  const onNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    handleNavClick(e, href);
     setOpen(false);
   };
 
-  // Handle nav link click
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    scrollToSection(href);
-  };
-
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-background/95 backdrop-blur-md shadow-card border-b" : "bg-transparent"}`}>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+        ? "bg-background/95 backdrop-blur-md shadow-card border-b"
+        : "bg-transparent"
+        }`}
+    >
       <div className="container flex items-center justify-between h-18 py-4">
-        <a href="#home" onClick={(e) => handleNavClick(e, "#home")} className="font-heading text-2xl font-extrabold text-primary">
-          Edu<span className="text-gradient-gold">stack</span>
+
+        {/* LOGO */}
+        <a
+          href="#home"
+          onClick={(e) => onNavClick(e, "#home")}
+          className="flex items-center gap-2"
+        >
+          <img
+            src={logo}
+            alt="EduStack Logo"
+            className="h-12 sm:h-14 md:h-16 lg:h-18 w-auto object-contain"
+          />
         </a>
 
-        {/* Desktop */}
+        {/* Desktop Menu */}
         <div className="hidden lg:flex items-center gap-8">
           {navLinks.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              onClick={(e) => handleNavClick(e, l.href)}
+              onClick={(e) => onNavClick(e, l.href)}
               className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors relative group"
             >
               {l.label}
@@ -73,15 +57,24 @@ const Navbar = () => {
             </a>
           ))}
         </div>
+
+        {/* Desktop CTA */}
         <div className="hidden lg:flex items-center gap-3">
-          {/* <Button variant="ghost" size="default" className="text-primary font-semibold">Login</Button> */}
-          <Button variant="gold" size="lg" className="cta-shimmer" onClick={openModal}>
+          <Button
+            variant="gold"
+            size="lg"
+            className="cta-shimmer"
+            onClick={openModal}
+          >
             Register Now <ChevronRight size={16} />
           </Button>
         </div>
 
         {/* Mobile toggle */}
-        <button className="lg:hidden p-2 rounded-lg hover:bg-muted transition-colors" onClick={() => setOpen(!open)}>
+        <button
+          className="lg:hidden p-2 rounded-lg hover:bg-muted transition-colors"
+          onClick={() => setOpen(!open)}
+        >
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
@@ -94,14 +87,24 @@ const Navbar = () => {
               <a
                 key={l.href}
                 href={l.href}
-                onClick={(e) => handleNavClick(e, l.href)}
+                onClick={(e) => onNavClick(e, l.href)}
                 className="py-3 px-4 rounded-lg text-sm font-medium text-foreground/70 hover:text-primary hover:bg-muted transition-all"
               >
                 {l.label}
               </a>
             ))}
             <div className="border-t my-2" />
-            <Button variant="gold" size="lg" className="mt-2 cta-shimmer" onClick={() => { setOpen(false); openModal(); }}>Register Now</Button>
+            <Button
+              variant="gold"
+              size="lg"
+              className="mt-2 cta-shimmer"
+              onClick={() => {
+                setOpen(false);
+                openModal();
+              }}
+            >
+              Register Now
+            </Button>
           </div>
         </div>
       )}

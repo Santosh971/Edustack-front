@@ -71,9 +71,11 @@ const AdminLogin = () => {
         return;
       }
 
-      // Success - store token and redirect
-      login(data.token, data.admin || { id: "admin", email });
-      navigate("/admin", { replace: true });
+      // Success - store token and redirect to admin dashboard
+      // Backend returns: { success: true, data: { token, admin } }
+      const { token, admin } = data.data || data;
+      login(token, admin || { id: "admin", email });
+      navigate("/admin/dashboard", { replace: true });
     } catch (err) {
       // Network or other errors
       setError("Unable to connect to the server. Please check your connection and try again.");

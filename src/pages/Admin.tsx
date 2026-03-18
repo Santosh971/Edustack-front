@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { ArrowLeft, Users, Mail, Phone, BookOpen, Calendar, RefreshCw, AlertCircle } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { Users, Mail, Phone, BookOpen, Calendar, RefreshCw, AlertCircle, LogOut } from "lucide-react";
+import { useAuth } from "@/context/AuthContext";
 import { API_ENDPOINTS } from "@/config/api";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -16,16 +17,35 @@ interface Contact {
 }
 
 const Admin = () => {
+  const navigate = useNavigate();
+  const { logout, admin, token } = useAuth();
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  // Handle logout
+  const handleLogout = () => {
+    logout();
+    navigate("/admin");
+  };
 
   const fetchContacts = async () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(API_ENDPOINTS.GET_CONTACTS);
+      // Include auth token in request headers
+      const response = await fetch(API_ENDPOINTS.GET_CONTACTS, {
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
+      });
       if (!response.ok) {
+        if (response.status === 401) {
+          // Token expired or invalid - logout and redirect
+          logout();
+          navigate("/admin");
+          return;
+        }
         throw new Error("Failed to fetch contacts");
       }
       const data = await response.json();
@@ -108,19 +128,21 @@ const Admin = () => {
       <header className="gradient-navy text-white py-6 shadow-lg">
         <div className="container mx-auto px-4">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <div className="flex items-center gap-4">
-              <Link
-                to="/"
-                className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors"
-              >
-                <ArrowLeft className="h-5 w-5" />
-                <span className="text-sm font-medium">Back to Home</span>
-              </Link>
-            </div>
-            <div className="text-center sm:text-right">
+            <div className="text-center sm:text-left">
               <h1 className="text-2xl md:text-3xl font-bold font-heading">Admin Dashboard</h1>
-              <p className="text-white/70 text-sm mt-1">Manage contact submissions</p>
+              {admin && (
+                <p className="text-white/70 text-sm mt-1">Welcome, {admin.name || admin.email}</p>
+              )}
             </div>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleLogout}
+              className="gap-2 bg-white/10 border-white/20 text-white hover:bg-white/20"
+            >
+              <LogOut className="h-4 w-4" />
+              Logout
+            </Button>
           </div>
         </div>
       </header>

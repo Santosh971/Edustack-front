@@ -64,6 +64,75 @@
 
 
 
+// import { CheckCircle2, ChevronRight } from "lucide-react";
+// import { Button } from "@/components/ui/button";
+// import { useRegisterModal } from "@/context/RegisterModalContext";
+
+// const features = [
+//   "Expert French instructors with real-world experience",
+//   "Structured curriculum from A1 to B2",
+//   "Flexible recorded + live sessions",
+//   "Focused preparation for TEF / TCF exams",
+//   "Personal mentorship and guidance",
+//   "Affordable learning for international students",
+// ];
+
+// const WhySection = () => {
+//   const { openModal } = useRegisterModal();
+
+//   // Why Us section - id matches navbar link
+//   return (
+//     <section id="why-choose" className="py-20 md:py-28 bg-background section-pattern">
+//       <div className="container">
+
+//       {/* Heading */}
+//       <div className="text-center mb-14">
+//         <span className="inline-block text-secondary text-sm font-semibold uppercase tracking-widest mb-3">
+//           Why Edustack
+//         </span>
+
+//         <h2 className="text-3xl md:text-4xl font-extrabold text-primary">
+//           Why Students Choose Edustack
+//         </h2>
+
+//         <p className="text-muted-foreground max-w-2xl mx-auto mt-3">
+//           We combine expert teaching, flexible learning, and strong mentorship
+//           to help students succeed in their French language journey.
+//         </p>
+//       </div>
+
+//       {/* Features */}
+//       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+//         {features.map((feature) => (
+//           <div
+//             key={feature}
+//             className="bg-card border rounded-2xl p-6 shadow-card hover-lift flex items-start gap-3"
+//           >
+//             <CheckCircle2 className="text-secondary shrink-0 mt-1" size={20} />
+//             <p className="text-muted-foreground text-sm leading-relaxed">
+//               {feature}
+//             </p>
+//           </div>
+//         ))}
+//       </div>
+
+//       {/* Register Button */}
+//       <div
+//         className="flex justify-center mt-14 animate-fade-up"
+//         style={{ animationDelay: "0.3s" }}
+//       >
+//         <Button variant="gold" size="xl" className="shadow-gold cta-shimmer" onClick={openModal}>
+//           Register Now <ChevronRight size={18} />
+//         </Button>
+//       </div>
+
+//     </div>
+//   </section>
+//   );
+// };
+
+// export default WhySection;
+
 import { CheckCircle2, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useRegisterModal } from "@/context/RegisterModalContext";
@@ -80,54 +149,63 @@ const features = [
 const WhySection = () => {
   const { openModal } = useRegisterModal();
 
-  // Why Us section - id matches navbar link
   return (
-    <section id="why-choose" className="py-20 md:py-28 bg-background section-pattern">
+    <section
+      id="why-choose"
+      className="py-20 md:py-28 bg-background section-pattern"
+    >
       <div className="container">
 
-      {/* Heading */}
-      <div className="text-center mb-14">
-        <span className="inline-block text-secondary text-sm font-semibold uppercase tracking-widest mb-3">
-          Why Edustack
-        </span>
+        {/* Heading */}
+        <div className="text-center mb-16">
+          <span className="inline-block text-secondary text-sm font-semibold uppercase tracking-widest mb-3">
+            Why Edustack
+          </span>
 
-        <h2 className="text-3xl md:text-4xl font-extrabold text-primary">
-          Why Students Choose Edustack
-        </h2>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary leading-tight">
+            Why Students Choose Edustack
+          </h2>
 
-        <p className="text-muted-foreground max-w-2xl mx-auto mt-3">
-          We combine expert teaching, flexible learning, and strong mentorship
-          to help students succeed in their French language journey.
-        </p>
-      </div>
+          <p className="text-muted-foreground max-w-2xl mx-auto mt-4 text-base md:text-lg">
+            We combine expert teaching, flexible learning, and strong mentorship
+            to help students succeed in their French language journey.
+          </p>
+        </div>
 
-      {/* Features */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {features.map((feature) => (
-          <div
-            key={feature}
-            className="bg-card border rounded-2xl p-6 shadow-card hover-lift flex items-start gap-3"
+        {/* Features Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {features.map((feature) => (
+            <div
+              key={feature}
+              className="group bg-card border border-border/60 rounded-2xl p-6 md:p-7 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-start gap-4"
+            >
+              {/* Icon */}
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-secondary/15 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <CheckCircle2 className="text-secondary" size={20} />
+              </div>
+
+              {/* Text */}
+              <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+                {feature}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA Button */}
+        <div className="flex justify-center mt-16">
+          <Button
+            variant="gold"
+            size="xl"
+            className="shadow-gold cta-shimmer px-8 py-6 text-lg"
+            onClick={openModal}
           >
-            <CheckCircle2 className="text-secondary shrink-0 mt-1" size={20} />
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              {feature}
-            </p>
-          </div>
-        ))}
-      </div>
+            Register Now <ChevronRight size={18} />
+          </Button>
+        </div>
 
-      {/* Register Button */}
-      <div
-        className="flex justify-center mt-14 animate-fade-up"
-        style={{ animationDelay: "0.3s" }}
-      >
-        <Button variant="gold" size="xl" className="shadow-gold cta-shimmer" onClick={openModal}>
-          Register Now <ChevronRight size={18} />
-        </Button>
       </div>
-
-    </div>
-  </section>
+    </section>
   );
 };
 

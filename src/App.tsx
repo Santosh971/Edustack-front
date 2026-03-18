@@ -24,9 +24,12 @@ const App = () => (
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
+              {/* Admin login page - accessible at /admin */}
+              <Route path="/admin" element={<AdminLogin />} />
               <Route path="/admin/login" element={<AdminLogin />} />
+              {/* Admin dashboard - protected by auth */}
               <Route
-                path="/admin"
+                path="/admin/dashboard"
                 element={
                   <ProtectedRoute>
                     <Admin />

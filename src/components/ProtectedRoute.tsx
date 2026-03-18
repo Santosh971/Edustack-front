@@ -5,7 +5,7 @@ interface ProtectedRouteProps {
   children: React.ReactNode;
 }
 
-// Protected route component - redirects to login if not authenticated
+// Protected route component - redirects to /admin (login page) if not authenticated
 const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
   const { isAuthenticated, isLoading } = useAuth();
 
@@ -18,9 +18,9 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
     );
   }
 
-  // Redirect to login if not authenticated
+  // Redirect to /admin (login page) if not authenticated
   if (!isAuthenticated) {
-    return <Navigate to="/admin/login" replace />;
+    return <Navigate to="/admin" replace />;
   }
 
   return <>{children}</>;
