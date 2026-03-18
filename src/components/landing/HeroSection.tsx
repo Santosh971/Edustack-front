@@ -114,11 +114,11 @@
 
 
 import { Button } from "@/components/ui/button";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Star } from "lucide-react";
 import { FaUsers, FaBookOpen, FaStar } from "react-icons/fa";
 import heroImg from "@/assets/hero-students.jpg";
 import { useRegisterModal } from "@/context/RegisterModalContext";
-
+import { GiCanada } from "react-icons/gi";
 const stats = [
   { icon: FaUsers, value: "500+", label: "Students Enrolled" },
   { icon: FaBookOpen, value: "4", label: "Course Levels" },
@@ -136,14 +136,25 @@ const HeroSection = () => {
 
       <div className="container relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          
+
           {/* Left content */}
           <div className="space-y-8 py-8 md:py-16">
-            <div className="inline-flex items-center gap-2 bg-secondary/15 border border-secondary/30 text-secondary-foreground text-sm font-semibold px-5 py-2 rounded-full animate-fade-up">
+            {/* <div className="inline-flex items-center gap-2 bg-secondary/15 border border-secondary/30 text-secondary-foreground text-sm font-semibold px-5 py-2 rounded-full animate-fade-up">
               <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
               🇫🇷 New Batch Starting Soon
-            </div>
+            </div> */}
+            <div className="inline-flex items-center gap-2 bg-secondary/15 border border-secondary/30 text-secondary-foreground text-sm font-semibold px-5 py-2 rounded-full animate-fade-up">
+              <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
 
+              {/* Canada Flag Icon */}
+              <img
+                src="https://flagcdn.com/w40/ca.png"
+                alt="Canada"
+                className="w-5 h-4 object-cover rounded-sm shadow-sm"
+              />
+
+              New Batch Starting Soon
+            </div>
             <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.1] text-primary animate-fade-up">
               Master French with{" "}
               <span className="relative inline-block">
@@ -159,7 +170,7 @@ const HeroSection = () => {
               Edustack French Learning Institute helps international students and future immigrants build strong French language skills through structured online training.
             </p>
 
-            <div className="flex flex-wrap gap-4 w-full">
+            {/* <div className="flex flex-wrap gap-4 w-full">
               <Button
                 variant="gold"
                 size="xl"
@@ -168,20 +179,46 @@ const HeroSection = () => {
               >
                 Register Now <ChevronRight size={24} />
               </Button>
-            </div>
+            </div> */}
 
+            <div className="flex flex-wrap gap-4 w-full">
+              <Button
+                variant="gold"
+                size="xl"
+                className="shadow-gold w-full py-6 text-lg cta-shimmer animate-[heartbeat_1.8s_ease-in-out_infinite]"
+                onClick={openModal}
+              >
+                Register Now <ChevronRight size={24} />
+              </Button>
+            </div>
             <p className="text-sm font-semibold text-muted-foreground tracking-wider uppercase">
               Learn French · Build Your Future in Canada
             </p>
           </div>
 
           {/* Right image */}
-          <div className="relative">
+          <div className="relative animate-fade-up" style={{ animationDelay: "0.3s" }}>
             <div className="relative rounded-3xl overflow-hidden shadow-card-hover">
-              <img src={heroImg} alt="Students learning" className="w-full h-[400px] lg:h-[500px] object-cover" />
+              <img src={heroImg} alt="Students collaborating and learning French" className="w-full h-[400px] lg:h-[500px] object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent" />
             </div>
+
+            {/* Floating badge */}
+            <div className="absolute -bottom-4 -left-4 md:left-4 bg-card rounded-2xl shadow-card-hover p-4 border animate-float">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full gradient-gold flex items-center justify-center">
+                  <Star className="text-primary-foreground" size={18} />
+                </div>
+                <div>
+                  <p className="font-bold text-primary text-sm">Rated 4.9/5</p>
+                  <p className="text-xs text-muted-foreground">by 500+ students</p>
+                </div>
+              </div>
+            </div>
           </div>
+
+
+
         </div>
 
         {/* Stats bar */}

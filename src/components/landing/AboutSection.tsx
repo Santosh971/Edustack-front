@@ -151,7 +151,7 @@ const AboutSection = () => {
           </div>
 
           {/* Text side */}
-          <div className="space-y-8 py-4 md:py-8">
+          <div className="space-y-5 py-4 md:py-8">
 
             {/* Tag */}
             <div className="inline-flex items-center gap-2 bg-gold-light text-secondary-foreground text-sm font-semibold px-4 py-1.5 rounded-full">
@@ -159,24 +159,12 @@ const AboutSection = () => {
               About Edustack
             </div>
 
-            {/* ✅ Hero-style Heading */}
-            <h2 className="text-4xl sm:text-5xl lg:text-[3.2rem] font-extrabold leading-[1.1] text-primary">
-              Your Trusted Partner for{" "}
-              <span className="relative inline-block">
-                French Learning
-                <svg
-                  className="absolute -bottom-2 left-0 w-full"
-                  viewBox="0 0 200 12"
-                  fill="none"
-                >
-                  <path
-                    d="M2 8 C50 2, 150 2, 198 8"
-                    stroke="hsl(43, 100%, 52%)"
-                    strokeWidth="4"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </span>
+            <h2
+              className="text-3xl md:text-4xl lg:text-[2.75rem] font-extrabold text-primary tracking-tight"
+              style={{ wordSpacing: "0.15em", lineHeight: "2.7rem" }}
+            >
+              Your Trusted Partner for <br className="hidden md:block" />
+              French Language Education
             </h2>
 
             {/* Description */}
@@ -189,7 +177,7 @@ const AboutSection = () => {
             </p>
 
             {/* Highlights */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
               {highlights.map((h) => (
                 <div
                   key={h}

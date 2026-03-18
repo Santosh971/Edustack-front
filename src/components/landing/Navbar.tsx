@@ -94,7 +94,7 @@ const Navbar = () => {
               </a>
             ))}
             <div className="border-t my-2" />
-            <Button
+            {/* <Button
               variant="gold"
               size="lg"
               className="mt-2 cta-shimmer"
@@ -104,7 +104,34 @@ const Navbar = () => {
               }}
             >
               Register Now
-            </Button>
+            </Button> */}
+
+            <>
+              <style>{`
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      14% { transform: scale(1.06); }
+      28% { transform: scale(1); }
+      42% { transform: scale(1.04); }
+      56% { transform: scale(1); }
+    }
+  `}</style>
+
+              <Button
+                variant="gold"
+                size="lg"
+                className="mt-2 cta-shimmer"
+                style={{
+                  animation: "heartbeat 1.8s ease-in-out infinite",
+                }}
+                onClick={() => {
+                  setOpen(false);
+                  openModal();
+                }}
+              >
+                Register Now
+              </Button>
+            </>
           </div>
         </div>
       )}

@@ -2,6 +2,14 @@ import { Facebook, Instagram, Youtube, Linkedin } from "lucide-react";
 import { navLinks, handleNavClick } from "@/config/navigation";
 import logo from "@/assets/EdustackLogo.png";
 
+// How It Works steps - matches MethodSection
+const howItWorksSteps = [
+  { label: "Recorded Classes", href: "#method" },
+  { label: "Live Sessions", href: "#method" },
+  { label: "Speaking Practice", href: "#method" },
+  { label: "Mentorship", href: "#method" },
+];
+
 const Footer = () => (
   <footer className="bg-white pt-14 pb-8 relative overflow-hidden border-t">
 
@@ -90,20 +98,23 @@ const Footer = () => (
           </nav>
         </div>
 
-        {/* Legal Links */}
+        {/* How It Works */}
         <div>
           <h4 className="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wider">
-            Legal
+            How It Works
           </h4>
 
           <nav className="space-y-3">
-            <a href="#" className="block text-gray-600 hover:text-yellow-600 transition-colors text-sm">
-              Privacy Policy
-            </a>
-
-            <a href="#" className="block text-gray-600 hover:text-yellow-600 transition-colors text-sm">
-              Terms of Service
-            </a>
+            {howItWorksSteps.map((l) => (
+              <a
+                key={l.label}
+                href={l.href}
+                onClick={(e) => handleNavClick(e, l.href)}
+                className="block text-gray-600 hover:text-yellow-600 transition-colors text-sm cursor-pointer"
+              >
+                {l.label}
+              </a>
+            ))}
           </nav>
         </div>
 

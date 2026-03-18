@@ -49,8 +49,8 @@ const audiences = [
     icon: GraduationCap,
     title: "International Students in Canada",
     desc: "Already in Canada and want to boost French skills for studies and daily life.",
-    // gradient: "from-primary to-navy-medium",
-    gradient: "from-secondary to-amber-500",
+    gradient: "from-white to-white",
+    // gradient: "from-secondary to-amber-500",
   },
   {
     icon: Plane,
@@ -63,7 +63,7 @@ const audiences = [
     title: "PR Applicants",
     desc: "Need strong French for TEF/TCF scores to boost immigration applications.",
     // gradient: "from-primary to-navy-medium",
-    gradient: "from-secondary to-amber-500",
+    gradient: "from-white to-white",
   },
   {
     icon: School,
@@ -104,7 +104,7 @@ const AudienceSection = () => {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {audiences.map((a) => (
+          {/* {audiences.map((a) => (
             <div
               key={a.title}
               className="group bg-primary-foreground/5 backdrop-blur-sm border border-primary-foreground/10 rounded-2xl p-6 hover:bg-primary-foreground/10 transition-all duration-300 hover:-translate-y-2 text-center space-y-4"
@@ -116,6 +116,29 @@ const AudienceSection = () => {
               </div>
 
               <h3 className="font-bold text-primary-foreground text-lg">{a.title}</h3>
+
+              <p className="text-primary-foreground/60 text-sm leading-relaxed">
+                {a.desc}
+              </p>
+            </div>
+          ))} */}
+          {audiences.map((a, index) => (
+            <div
+              key={a.title}
+              className="group bg-primary-foreground/5 backdrop-blur-sm border border-primary-foreground/10 rounded-2xl p-6 hover:bg-primary-foreground/10 transition-all duration-300 hover:-translate-y-2 text-center space-y-4"
+            >
+              <div
+                className={`mx-auto w-16 h-16 rounded-2xl bg-gradient-to-br ${a.gradient} flex items-center justify-center shadow-lg shadow-white/20 group-hover:scale-110 group-hover:shadow-white/40 transition-all duration-300`}
+              >
+                <a.icon
+                  className={`${index === 0 || index === 2 ? "navy-medium" : "text-primary-foreground"}`}
+                  size={28}
+                />
+              </div>
+
+              <h3 className="font-bold text-primary-foreground text-lg">
+                {a.title}
+              </h3>
 
               <p className="text-primary-foreground/60 text-sm leading-relaxed">
                 {a.desc}

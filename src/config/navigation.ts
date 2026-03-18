@@ -5,7 +5,7 @@ export const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Courses", href: "#levels" },
-  { label: "Method", href: "#method" },
+  { label: "How It Works", href: "#method" },
   { label: "Why Us", href: "#why-choose" },
 ];
 
