@@ -294,7 +294,7 @@ const RegisterModal = () => {
             type="submit"
             variant="gold"
             size="lg"
-            className="w-full shadow-gold"
+            className="w-full shadow-gold cta-shimmer"
             disabled={isSubmitting || submitStatus === "success"}
           >
             {isSubmitting ? (

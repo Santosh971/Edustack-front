@@ -108,7 +108,7 @@ const AudienceSection = () => {
             className="group bg-primary-foreground/5 backdrop-blur-sm border border-primary-foreground/10 rounded-2xl p-6 hover:bg-primary-foreground/10 transition-all duration-300 hover:-translate-y-2 text-center space-y-4"
           >
             <div
-              className={`mx-auto w-16 h-16 rounded-2xl bg-gradient-to-br ${a.gradient} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}
+              className={`mx-auto w-16 h-16 rounded-2xl bg-gradient-to-br ${a.gradient} flex items-center justify-center shadow-lg shadow-white/20 group-hover:scale-110 group-hover:shadow-white/40 transition-all duration-300`}
             >
               <a.icon className="text-primary-foreground" size={28} />
             </div>
@@ -127,7 +127,7 @@ const AudienceSection = () => {
         className="flex justify-center mt-14 animate-fade-up"
         style={{ animationDelay: "0.3s" }}
       >
-        <Button variant="gold" size="xl" className="shadow-gold" onClick={openModal}>
+        <Button variant="gold" size="xl" className="shadow-gold cta-shimmer" onClick={openModal}>
           Register Now <ChevronRight size={18} />
         </Button>
       </div>

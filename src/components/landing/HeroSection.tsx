@@ -12,8 +12,9 @@ const stats = [
 const HeroSection = () => {
   const { openModal } = useRegisterModal();
 
+  // Hero section - id for Home navigation
   return (
-    <section className="relative pt-24 pb-0 overflow-hidden gradient-hero">
+    <section id="home" className="relative pt-24 pb-0 overflow-hidden gradient-hero">
       {/* Background decorative elements */}
       <div className="absolute top-20 right-10 w-72 h-72 bg-secondary/10 rounded-full blur-3xl" />
       <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
@@ -46,7 +47,7 @@ const HeroSection = () => {
               <Button
                 variant="gold"
                 size="xl"
-                className="shadow-gold w-full py-6 text-lg"
+                className="shadow-gold w-full py-6 text-lg cta-shimmer"
                 onClick={openModal}
               >
                 Register Now <ChevronRight size={24} />

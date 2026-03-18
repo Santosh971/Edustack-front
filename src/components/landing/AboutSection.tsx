@@ -145,7 +145,7 @@ const AboutSection = () => {
         className="flex justify-center mt-14 animate-fade-up"
         style={{ animationDelay: "0.3s" }}
       >
-        <Button variant="gold" size="xl" className="shadow-gold" onClick={openModal}>
+        <Button variant="gold" size="xl" className="shadow-gold cta-shimmer" onClick={openModal}>
           Register Now <ChevronRight size={18} />
         </Button>
       </div>

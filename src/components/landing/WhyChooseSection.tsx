@@ -80,9 +80,10 @@ const features = [
 const WhySection = () => {
   const { openModal } = useRegisterModal();
 
+  // Why Us section - id matches navbar link
   return (
-  <section className="py-20 md:py-28 bg-background section-pattern">
-    <div className="container">
+    <section id="why-choose" className="py-20 md:py-28 bg-background section-pattern">
+      <div className="container">
 
       {/* Heading */}
       <div className="text-center mb-14">
@@ -120,7 +121,7 @@ const WhySection = () => {
         className="flex justify-center mt-14 animate-fade-up"
         style={{ animationDelay: "0.3s" }}
       >
-        <Button variant="gold" size="xl" className="shadow-gold" onClick={openModal}>
+        <Button variant="gold" size="xl" className="shadow-gold cta-shimmer" onClick={openModal}>
           Register Now <ChevronRight size={18} />
         </Button>
       </div>

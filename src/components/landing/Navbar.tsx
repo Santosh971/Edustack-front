@@ -3,13 +3,18 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronRight } from "lucide-react";
 import { useRegisterModal } from "@/context/RegisterModalContext";
 
+// Navigation links with IDs matching section IDs
 const navLinks = [
+  { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Courses", href: "#levels" },
   { label: "Method", href: "#method" },
   { label: "Why Us", href: "#why-choose" },
   // { label: "Contact", href: "#contact" },
 ];
+
+// Navbar height for scroll offset (fixed navbar height)
+const NAVBAR_HEIGHT = 80;
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -22,17 +27,47 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
+  // Smooth scroll to section with offset for fixed navbar
+  const scrollToSection = (href: string) => {
+    const targetId = href.replace("#", "");
+    const element = document.getElementById(targetId);
+
+    if (element) {
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - NAVBAR_HEIGHT;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+
+    // Close mobile menu after clicking
+    setOpen(false);
+  };
+
+  // Handle nav link click
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    scrollToSection(href);
+  };
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-background/95 backdrop-blur-md shadow-card border-b" : "bg-transparent"}`}>
       <div className="container flex items-center justify-between h-18 py-4">
-        <a href="#" className="font-heading text-2xl font-extrabold text-primary">
+        <a href="#home" onClick={(e) => handleNavClick(e, "#home")} className="font-heading text-2xl font-extrabold text-primary">
           Edu<span className="text-gradient-gold">stack</span>
         </a>
 
         {/* Desktop */}
         <div className="hidden lg:flex items-center gap-8">
           {navLinks.map((l) => (
-            <a key={l.href} href={l.href} className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors relative group">
+            <a
+              key={l.href}
+              href={l.href}
+              onClick={(e) => handleNavClick(e, l.href)}
+              className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors relative group"
+            >
               {l.label}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full" />
             </a>
@@ -40,7 +75,7 @@ const Navbar = () => {
         </div>
         <div className="hidden lg:flex items-center gap-3">
           {/* <Button variant="ghost" size="default" className="text-primary font-semibold">Login</Button> */}
-          <Button variant="gold" size="lg" onClick={openModal}>
+          <Button variant="gold" size="lg" className="cta-shimmer" onClick={openModal}>
             Register Now <ChevronRight size={16} />
           </Button>
         </div>
@@ -56,12 +91,17 @@ const Navbar = () => {
         <div className="lg:hidden bg-background/98 backdrop-blur-lg border-t animate-fade-in">
           <div className="container flex flex-col gap-1 py-4">
             {navLinks.map((l) => (
-              <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="py-3 px-4 rounded-lg text-sm font-medium text-foreground/70 hover:text-primary hover:bg-muted transition-all">
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={(e) => handleNavClick(e, l.href)}
+                className="py-3 px-4 rounded-lg text-sm font-medium text-foreground/70 hover:text-primary hover:bg-muted transition-all"
+              >
                 {l.label}
               </a>
             ))}
             <div className="border-t my-2" />
-            <Button variant="gold" size="lg" className="mt-2" onClick={openModal}>Register Now</Button>
+            <Button variant="gold" size="lg" className="mt-2 cta-shimmer" onClick={() => { setOpen(false); openModal(); }}>Register Now</Button>
           </div>
         </div>
       )}
