@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
-
+import LoginLogo from "@/assets/LoginLogo.png";
 const AdminLogin = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
@@ -98,14 +98,19 @@ const AdminLogin = () => {
       <Card className="w-full max-w-md shadow-xl border-0">
         <CardHeader className="space-y-1 text-center">
           {/* Logo/Icon */}
-          <div className="mx-auto w-16 h-16 rounded-full gradient-navy flex items-center justify-center mb-4">
-            <Lock className="h-8 w-8 text-white" />
+          <div className="mx-auto mb-4">
+            <img
+              src={LoginLogo}
+              alt="Login Logo"
+              className="w-16 h-16 object-contain mx-auto"
+            />
           </div>
           <CardTitle className="text-2xl font-bold">Admin Login</CardTitle>
           <CardDescription className="text-muted-foreground">
             Enter your credentials to access the admin dashboard
           </CardDescription>
         </CardHeader>
+
 
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">

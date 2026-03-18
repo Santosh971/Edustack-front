@@ -73,10 +73,23 @@
 }
 
 @layer utilities {
+  /* CTA Button hover effect - smooth scaling without conflicting animations */
+  .cta-hover {
+    @apply transform-gpu transition-transform duration-300 ease-out;
+  }
+
+  .cta-hover:hover {
+    @apply scale-110;
+  }
+
+  .cta-hover:active {
+    @apply scale-95;
+  }
+
+  /* Shimmer effect only - no transform animations */
   .cta-shimmer {
     position: relative;
     overflow: hidden;
-    animation: cta-bounce 3s ease-in-out infinite;
   }
 
   .cta-shimmer::before {
@@ -94,6 +107,11 @@
     pointer-events: none;
   }
 
+  /* Combine shimmer with hover effect */
+  .cta-shimmer.cta-hover::before {
+    animation: shimmer-slide 2.5s ease-in-out infinite;
+  }
+
   @keyframes shimmer-slide {
     0% {
       left: -100%;
@@ -101,18 +119,6 @@
 
     100% {
       left: 100%;
-    }
-  }
-
-  @keyframes cta-bounce {
-
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-
-    50% {
-      transform: translateY(-4px);
     }
   }
 
@@ -182,28 +188,4 @@ html {
   background: linear-gradient(135deg, hsl(43 100% 52%) 0%, hsl(38 100% 56%) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-@keyframes heartbeat {
-
-  0%,
-  100% {
-    transform: scale(1);
-  }
-
-  14% {
-    transform: scale(1.06);
-  }
-
-  28% {
-    transform: scale(1);
-  }
-
-  42% {
-    transform: scale(1.04);
-  }
-
-  56% {
-    transform: scale(1);
-  }
 }

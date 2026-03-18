@@ -144,7 +144,7 @@ const HeroSection = () => {
               🇫🇷 New Batch Starting Soon
             </div> */}
             <div className="inline-flex items-center gap-2 bg-secondary/15 border border-secondary/30 text-secondary-foreground text-sm font-semibold px-5 py-2 rounded-full animate-fade-up">
-              <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
+              {/* <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" /> */}
 
               {/* Canada Flag Icon */}
               <img
@@ -170,22 +170,11 @@ const HeroSection = () => {
               Edustack French Learning Institute helps international students and future immigrants build strong French language skills through structured online training.
             </p>
 
-            {/* <div className="flex flex-wrap gap-4 w-full">
-              <Button
-                variant="gold"
-                size="xl"
-                className="shadow-gold w-full py-6 text-lg cta-shimmer"
-                onClick={openModal}
-              >
-                Register Now <ChevronRight size={24} />
-              </Button>
-            </div> */}
-
             <div className="flex flex-wrap gap-4 w-full">
               <Button
                 variant="gold"
                 size="xl"
-                className="shadow-gold w-full py-6 text-lg cta-shimmer animate-[heartbeat_1.8s_ease-in-out_infinite]"
+                className="shadow-gold w-full py-6 text-lg cta-shimmer cta-hover"
                 onClick={openModal}
               >
                 Register Now <ChevronRight size={24} />

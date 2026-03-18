@@ -33,11 +33,11 @@ const WhySection = () => {
             Why Edustack
           </span>
 
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary leading-tight">
+          <h2 className="text-3xl md:text-4xl  font-extrabold text-primary leading-tight">
             Why Students Choose Edustack
           </h2>
 
-          <p className="text-muted-foreground max-w-2xl mx-auto mt-4 text-base md:text-lg">
+          <p className="text-muted-foreground max-w-2xl mx-auto mt-4 text-base md:text-md">
             We combine expert teaching, flexible learning, and strong mentorship
             to help students succeed in their French language journey.
           </p>
@@ -68,7 +68,7 @@ const WhySection = () => {
           <Button
             variant="gold"
             size="xl"
-            className="shadow-gold cta-shimmer px-8 py-6 text-lg"
+            className="shadow-gold cta-shimmer cta-hover px-8 py-6 text-lg"
             onClick={openModal}
           >
             Register Now <ChevronRight size={18} />

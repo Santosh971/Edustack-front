@@ -199,7 +199,7 @@ const AboutSection = () => {
           <Button
             variant="gold"
             size="xl"
-            className="shadow-gold cta-shimmer px-8 py-6 text-lg"
+            className="shadow-gold cta-shimmer cta-hover px-8 py-6 text-lg"
             onClick={openModal}
           >
             Register Now <ChevronRight size={18} />
