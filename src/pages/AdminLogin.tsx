@@ -49,6 +49,8 @@ const AdminLogin = () => {
     setIsLoading(true);
 
     try {
+      console.log("Login attempt:", { email, endpoint: API_ENDPOINTS.ADMIN_LOGIN });
+
       const response = await fetch(API_ENDPOINTS.ADMIN_LOGIN, {
         method: "POST",
         headers: {
@@ -57,7 +59,9 @@ const AdminLogin = () => {
         body: JSON.stringify({ email, password }),
       });
 
+      console.log("Response status:", response.status);
       const data = await response.json();
+      console.log("Response data:", data);
 
       if (!response.ok) {
         // Handle error responses
@@ -68,18 +72,20 @@ const AdminLogin = () => {
         } else {
           setError(data.message || "An error occurred. Please try again.");
         }
+        setIsLoading(false);
         return;
       }
 
       // Success - store token and redirect to admin dashboard
       // Backend returns: { success: true, data: { token, admin } }
       const { token, admin } = data.data || data;
+      console.log("Login success, navigating to /admin/dashboard");
       login(token, admin || { id: "admin", email });
       navigate("/admin/dashboard", { replace: true });
     } catch (err) {
+      console.error("Login error:", err);
       // Network or other errors
       setError("Unable to connect to the server. Please check your connection and try again.");
-    } finally {
       setIsLoading(false);
     }
   };
